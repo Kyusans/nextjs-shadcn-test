@@ -1,7 +1,7 @@
 import "./globals.css";
 
 import { ThemeProvider } from "@/components/theme-provider"
-import { ModeToggle } from "@/components/ui/mode-toggle";
+import { Toaster } from "sonner";
 
 export const metadata = {
   title: "Delmonte",
@@ -13,17 +13,15 @@ export default function RootLayout({ children }) {
     <>
       <html lang="en" suppressHydrationWarning>
         <head />
-        <body>
+        <body className="bg-green-900 dark:bg-[#09090b]">
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
           >
-            <div className="absolute right-4 top-4">
-              <ModeToggle />
-            </div>
             {children}
+            <Toaster className="z-50" richColors duration={2000} position="bottom-left" />
           </ThemeProvider>
         </body>
       </html>
