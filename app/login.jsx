@@ -46,13 +46,17 @@ export default function Home() {
       formData.append("operation", "login");
       formData.append("json", JSON.stringify(values));
       const res = await axios.post(url, formData);
-      // console.log("res mo to, " + JSON.stringify(res));
+      console.log("res mo to, " + JSON.stringify(res));
       if (res.data === 0) {
         toast.error("Invalid username or password");
       } else {
         toast.success("Login successful");
         secureLocalStorage.setItem("userId", res.data.user_id);
-        // router.push("/dashboard");
+        if(res.data.user_level === 100){
+          router.push("/admin");
+        }else{
+          router.push("/dashboard");
+        }
       }
     } catch (error) {
       toast.error("Network error")
