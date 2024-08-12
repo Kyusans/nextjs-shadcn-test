@@ -2,6 +2,7 @@ import "./globals.css";
 
 import { ThemeProvider } from "@/components/theme-provider"
 import { ModeToggle } from "@/components/ui/mode-toggle";
+import { Toaster } from "sonner";
 
 export const metadata = {
   title: "Delmonte",
@@ -13,7 +14,7 @@ export default function RootLayout({ children }) {
     <>
       <html lang="en" suppressHydrationWarning>
         <head />
-        <body>
+        <body className="bg-green-900 dark:bg-[#09090b]">
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
               <ModeToggle />
             </div>
             {children}
+            <Toaster richColors duration={2000} position="bottom-left" />
           </ThemeProvider>
         </body>
       </html>
